@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mohamed Taha Abo Hieba — Data Engineer</title>
+<title>Mohamed Taha — Data Engineer</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -25,8 +25,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:99;height:62px;display:flex;alig
  
 /* HERO */
 #hero{min-height:100vh;display:flex;align-items:center;padding:62px 5% 0;position:relative;overflow:hidden;}
+.hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 360px;align-items:center;gap:4rem;}
+.hero-photo-side{display:flex;justify-content:center;align-items:center;}
+.photo-frame{position:relative;width:340px;height:440px;}
+.photo-frame::before{content:'';position:absolute;top:14px;left:14px;right:-14px;bottom:-14px;border:2px solid var(--accent);z-index:0;opacity:.6;}
+.photo-frame img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;position:relative;z-index:1;filter:grayscale(8%);}
+.photo-badge{position:absolute;bottom:-12px;left:-12px;z-index:2;background:var(--accent);color:var(--bg);font-family:'DM Serif Display',serif;font-size:.75rem;font-style:italic;padding:.35rem .9rem;}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:52px 52px;opacity:.3;z-index:0;}
-.hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;width:100%;}
+.hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 360px;align-items:center;gap:4rem;}
+.photo-frame{position:relative;width:100%;aspect-ratio:3/4;}
+.photo-frame::before{content:'';position:absolute;top:14px;left:14px;right:-14px;bottom:-14px;border:2px solid var(--accent);z-index:0;opacity:.45;}
+.photo-frame img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;position:relative;z-index:1;filter:grayscale(8%);}
+.photo-badge{position:absolute;bottom:-10px;left:-10px;z-index:2;background:var(--accent);color:var(--bg);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.32rem .9rem;}
 .eyebrow{display:inline-flex;align-items:center;background:#0f2a3d;color:var(--accent);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.38rem 1rem;border-radius:2rem;margin-bottom:1.6rem;}
 .hero-name{font-family:'DM Serif Display',serif;font-size:clamp(2.6rem,6vw,5rem);line-height:1.05;margin-bottom:1.2rem;}
 .hero-name em{font-style:italic;color:var(--accent);}
@@ -39,6 +49,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:99;height:62px;display:flex;alig
 .hero-stats{display:flex;gap:3rem;margin-top:3.5rem;padding-top:2rem;border-top:1px solid var(--line);}
 .sn{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--navy);line-height:1;}
 .sl{font-size:.75rem;color:var(--muted);margin-top:.2rem;letter-spacing:.03em;}
+ 
+/* HERO PHOTO */
+#hero{display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center;}
+.photo-frame{position:relative;width:300px;height:380px;flex-shrink:0;}
+.photo-frame::before{content:'';position:absolute;top:14px;left:14px;right:-14px;bottom:-14px;border:2px solid var(--accent);z-index:0;}
+.photo-frame img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;position:relative;z-index:1;filter:grayscale(10%);}
+.photo-badge{position:absolute;bottom:-12px;left:-12px;z-index:2;background:var(--accent);color:var(--bg);font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.32rem .85rem;}
+@media(max-width:860px){#hero{grid-template-columns:1fr;}.photo-frame{display:none;}}
  
 /* SECTIONS */
 .sec{padding:96px 5%;}
@@ -91,6 +109,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:99;height:62px;display:flex;alig
 footer{text-align:center;padding:1.8rem 5%;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted);}
  
 @media(max-width:860px){
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-photo-side{display:none;}
   .proj-grid{grid-template-columns:1fr;}
   .con-grid{grid-template-columns:1fr;gap:2.5rem;}
   .nav-links{display:none;}
@@ -116,18 +136,26 @@ footer{text-align:center;padding:1.8rem 5%;border-top:1px solid var(--line);font
 <div id="hero">
   <div class="hero-grid"></div>
   <div class="hero-inner">
-    <div class="eyebrow">Available for Junior Roles</div>
-    <h1 class="hero-name">Mohamed Taha<br><em>Abo Heiba</em></h1>
-    <p class="hero-bio">Junior Data Engineer specializing in building end-to-end data pipelines, Lakehouse architectures, and big data systems. I turn raw, messy data from disconnected sources into clean, analytics-ready models that drive real decisions.</p>
-    <div class="hero-cta">
-      <a href="#projects" class="btn-fill">View Projects</a>
-      <a href="https://linkedin.com/in/mohamed-taha-abo-heiba" target="_blank" class="btn-out">LinkedIn</a>
-      <a href="https://github.com/MoTahaAboHeiba" target="_blank" class="btn-out">GitHub</a>
+    <div>
+      <div class="eyebrow">Available for Junior Roles</div>
+      <h1 class="hero-name">Mohamed Taha<br><em>Abo Heiba</em></h1>
+      <p class="hero-bio">Junior Data Engineer specializing in building end-to-end data pipelines, Lakehouse architectures, and big data systems. I turn raw, messy data from disconnected sources into clean, analytics-ready models that drive real decisions.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-fill">View Projects</a>
+        <a href="https://linkedin.com/in/mohamed-taha-abo-heiba" target="_blank" class="btn-out">LinkedIn</a>
+        <a href="https://github.com/MoTahaAboHeiba" target="_blank" class="btn-out">GitHub</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="sn">4</div><div class="sl">Projects Built</div></div>
+        <div><div class="sn">3</div><div class="sl">Training Programs</div></div>
+        <div><div class="sn">15+</div><div class="sl">Technologies</div></div>
+      </div>
     </div>
-    <div class="hero-stats">
-      <div><div class="sn">4</div><div class="sl">Projects Built</div></div>
-      <div><div class="sn">3</div><div class="sl">Training Programs</div></div>
-      <div><div class="sn">15+</div><div class="sl">Technologies</div></div>
+    <div class="hero-photo-side">
+      <div class="photo-frame">
+        <img src="photo.jpg" alt="Mohamed Taha Abo Heiba">
+        <div class="photo-badge">Data Engineer</div>
+      </div>
     </div>
   </div>
 </div>
@@ -140,19 +168,19 @@ footer{text-align:center;padding:1.8rem 5%;border-top:1px solid var(--line);font
     <div class="divider"></div>
     <div class="timeline">
       <div class="ti">
-        <div class="ti-period">2024 </div>
+        <div class="ti-period">2024 — 2025</div>
         <div class="ti-role">Data Engineer Trainee</div>
         <div class="ti-org">DEPI — Digital Egypt Pioneers Initiative</div>
         <p class="ti-desc">Intensive training in ETL design, SQL Server data warehousing, and Python-based data processing with Pandas. Delivered end-to-end pipeline projects including a full data warehouse using Medallion Architecture.</p>
       </div>
       <div class="ti">
-        <div class="ti-period">2025</div>
+        <div class="ti-period">2024</div>
         <div class="ti-role">Huawei Big Data Trainee</div>
         <div class="ti-org">NTI — National Telecommunications Institute</div>
         <p class="ti-desc">Hands-on training covering Apache Spark, Hive, Kafka, Flink, and Hadoop. Focused on distributed data processing architectures and real-time streaming pipeline design.</p>
       </div>
       <div class="ti">
-        <div class="ti-period">2025</div>
+        <div class="ti-period">2024</div>
         <div class="ti-role">AWS Cloud Engineer Trainee</div>
         <div class="ti-org">NTI — National Telecommunications Institute</div>
         <p class="ti-desc">Practical training on core AWS services including EC2, S3, RDS, IAM, and Auto Scaling. Applied cloud infrastructure skills to deploy and manage data workloads on AWS.</p>
@@ -314,8 +342,8 @@ footer{text-align:center;padding:1.8rem 5%;border-top:1px solid var(--line);font
           <div class="pnum">01</div>
           <div class="ptitle">E-Commerce Lakehouse — Databricks</div>
           <p class="pdesc">End-to-end Lakehouse built entirely inside Databricks using Medallion Architecture. Ingests raw CRM and ERP data from 6 CSV sources, applies PySpark transformations through Bronze and Silver layers, and delivers a star schema via Spark SQL. All tables stored as Delta Tables in Unity Catalog. Orchestrated with a Databricks Jobs three-task DAG.</p>
-          <div class="pstack"><span class="tag">Databricks</span><span class="tag">PySpark</span><span class="tag">Spark SQL</span><span class="tag">Delta Lake</span><span class="tag">Unity Catalog</span></div>
-          <a href="https://github.com/MoTahaAboHeiba" target="_blank" class="plink">View on GitHub &rarr;</a>
+          <div class="pstack"><span class="tag">Databricks</span><span class="tag">PySpark</span><span class="tag">Spark SQL</span><span class="tag">Delta Lake</span><span class="tag">ETL</span><span class="tag">Jobs Orchestration</span><span class="tag">Unity Catalog</span></div>
+          <a href="https://github.com/MoTahaAboHeiba/E-Commerce-Lakehouse-Using-Databricks" target="_blank" class="plink">View on GitHub &rarr;</a>
         </div>
       </div>
  
@@ -526,7 +554,7 @@ footer{text-align:center;padding:1.8rem 5%;border-top:1px solid var(--line);font
           <div class="ptitle">EduMate — RAG AI Microservice</div>
           <p class="pdesc">AI microservice implementing a full Retrieval-Augmented Generation pipeline. Course PDFs are indexed via LangChain chunking and embedding into ChromaDB. At query time, the retriever performs similarity search to fetch relevant chunks, which are assembled into a prompt and passed to Groq LLM for inference. Exposed through FastAPI with 7 REST endpoints.</p>
           <div class="pstack"><span class="tag">FastAPI</span><span class="tag">LangChain</span><span class="tag">ChromaDB</span><span class="tag">Python</span><span class="tag">Docker</span><span class="tag">Groq</span></div>
-          <a href="https://github.com/MoTahaAboHeiba" target="_blank" class="plink">View on GitHub &rarr;</a>
+          <a href="https://github.com/MoTahaAboHeiba/EduMate-RAG" target="_blank" class="plink">View on GitHub &rarr;</a>
         </div>
       </div>
  
@@ -601,7 +629,7 @@ footer{text-align:center;padding:1.8rem 5%;border-top:1px solid var(--line);font
           <div class="ptitle">Online Retail Analytics Dashboard</div>
           <p class="pdesc">Enterprise-grade Power BI dashboard transforming 541K+ retail transactions into actionable insights. ETL pipeline built in Power Query reduces data from 541K to 406K clean rows. Five DAX measures power 3 interactive dashboard pages — Executive Overview, Product Intelligence, and Customer Analytics — surfacing £9.73M in revenue across 38 countries and 4,372 customers.</p>
           <div class="pstack"><span class="tag">Power BI</span><span class="tag">Power Query</span><span class="tag">DAX</span><span class="tag">ETL</span><span class="tag">Customer Segmentation</span></div>
-          <a href="https://app.powerbi.com/links/SGgKQbvxT0?ctid=5f593c84-cad4-46c8-b3de-321c3e829a99&pbi_source=linkShare" target="_blank" class="plink">View Live Dashboard &rarr;</a>
+          <a href="https://github.com/MoTahaAboHeiba/Online-Retail-PowerBi-Report" target="_blank" class="plink">View Live Dashboard &rarr;</a>
         </div>
       </div>
  
@@ -646,16 +674,10 @@ footer{text-align:center;padding:1.8rem 5%;border-top:1px solid var(--line);font
           <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div>
           github.com/MoTahaAboHeiba
         </a>
-        <a href="mailto:Mohamed-aboheiba@outlook.com" class="c-link">
-          <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
-          Mohamed-aboheiba@outlook.com
+        <a href="tel:+201149711922" class="c-link">
+          <div class="c-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z" fill="var(--accent)" stroke="none"/></svg></div>
+          +20 114 971 1922
         </a>
-      </div>
-    </div>
-  </div>
-</section>
- 
-<footer>Mohamed Taha Abo Heiba &mdash; Junior Data Engineer &mdash; 2025</footer>
- 
-</body>
-</html>
+        <a href="/cdn-cgi/l/email-protection#f2bf9d9a939f9796df93909d9a979b9093b29d87869e9d9d99dc919d9f" class="c-link">
+          <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+          <span class="__cf_email__" data-cfemail="7a3715121b171f1e571b1815121f13181b3a150f0e1615151154191517">[email&#160;protected]</span>
