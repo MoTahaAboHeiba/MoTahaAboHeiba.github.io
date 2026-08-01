@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohamed Taha — Data Engineer</title>
-  <meta name="description" content="Mohamed Taha Abo Heiba — Data Engineer and Big Data Engineer specialising in ETL pipelines, cloud-native lakehouses, and SQL data warehouses. AWS CLF-C02 and Huawei HCIA-Big Data certified.">
+  <title>Mohamed Taha, Data Engineer</title>
+  <meta name="description" content="Mohamed Taha Abo Heiba, Data Engineer and Big Data Engineer specialising in ETL pipelines, cloud-native lakehouses, and SQL data warehouses. AWS CLF-C02 and Huawei HCIA-Big Data certified.">
   <meta name="keywords" content="Mohamed Taha Abo Heiba, Data Engineer, Big Data Engineer, PySpark, Databricks, AWS, Kafka, ETL, Medallion Architecture, Egypt">
   <meta name="author" content="Mohamed Taha Abo Heiba">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Mohamed Taha Abo Heiba — Data Engineer">
+  <meta property="og:title" content="Mohamed Taha Abo Heiba, Data Engineer">
   <meta property="og:description" content="Building production-grade ETL pipelines, cloud lakehouses, and SQL data warehouses. AWS and Huawei HCIA-Big Data certified.">
   <meta property="og:image" content="https://motahaaboheiba.github.io/photo.jpg">
   <meta property="og:url" content="https://motahaaboheiba.github.io">
@@ -53,6 +53,10 @@
       --green-lo:  rgba(45,212,160,.1);
       --amber:     #f5a42b;
       --amber-lo:  rgba(245,164,43,.1);
+      --nav-bg: rgba(6,13,22,.9);
+      --mobile-nav-bg: rgba(6,13,22,.97);
+      --terminal-bg: #060e18;
+      --node-bg: rgba(6,13,22,.94);
       --mono: 'JetBrains Mono', monospace;
       --sans: 'Sora', -apple-system, sans-serif;
       --radius: 10px;
@@ -62,6 +66,31 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
+
+    body.light-theme {
+      /* Dimmed light theme: muted slate surfaces with no pure white glare */
+      --bg: #d9e0e5;
+      --surface: #e5eaee;
+      --surface-2: #cfd8df;
+      --border: #b7c3cc;
+      --border-2: #a3b2be;
+      --text: #182631;
+      --muted: #526777;
+      --dim: #718493;
+      --accent: #006f91;
+      --accent-lo: rgba(0,111,145,.09);
+      --accent-md: rgba(0,111,145,.16);
+      --green: #176f59;
+      --green-lo: rgba(23,111,89,.1);
+      --amber: #8b590b;
+      --amber-lo: rgba(139,89,11,.1);
+      --nav-bg: rgba(217,224,229,.95);
+      --mobile-nav-bg: rgba(217,224,229,.98);
+      --terminal-bg: #152531;
+      --node-bg: rgba(229,234,238,.98);
+      color-scheme: light;
+    }
+    :root { color-scheme: dark; }
     body {
       background: var(--bg);
       color: var(--text);
@@ -140,7 +169,7 @@
       top: 0; left: 0; right: 0;
       z-index: 100;
       height: var(--nav-h);
-      background: rgba(6,13,22,.9);
+      background: var(--nav-bg);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
@@ -225,6 +254,33 @@
       transparent
     );
 }
+body.light-theme .nav-logo-badge,
+body.light-theme .footer-logo .nav-logo-badge {
+  background: linear-gradient(145deg, #0a1924, #17354a);
+  border-color: rgba(0,111,145,.72);
+  box-shadow:
+    0 0 0 1px rgba(0,111,145,.12),
+    0 8px 22px rgba(20,39,53,.26),
+    inset 0 1px 0 rgba(255,255,255,.1);
+}
+body.light-theme .nav-logo-name {
+  color: #182631;
+  text-shadow: 0 1px 0 rgba(255,255,255,.35);
+}
+body.light-theme .nav-logo-badge .badge-m,
+body.light-theme .nav-logo-badge .badge-t {
+  color: #f8fcff;
+  text-shadow: 0 1px 2px rgba(0,0,0,.45);
+}
+body.light-theme .badge-divider {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0,200,245,.9),
+    transparent
+  );
+}
+
    .nav-logo:hover .nav-logo-badge {
   transform: translateY(-2px);
 
@@ -284,6 +340,28 @@
       transition: background .2s, color .2s;
     }
     .nav-Resume:hover { background: var(--accent); color: var(--bg); }
+    .theme-toggle {
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--muted);
+      background: var(--surface);
+      transition: transform .2s ease, border-color .2s ease, color .2s ease, background .2s ease;
+    }
+    .theme-toggle:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-lo);
+    }
+    .theme-toggle .theme-moon { display: none; }
+    body.light-theme .theme-toggle .theme-sun { display: none; }
+    body.light-theme .theme-toggle .theme-moon { display: inline-block; }
+    body.light-theme #particles-canvas { opacity: .035; }
     .nav-burger {
       display: none;
       flex-direction: column;
@@ -300,7 +378,7 @@
       position: fixed;
       top: var(--nav-h);
       left: 0; right: 0;
-      background: rgba(6,13,22,.97);
+      background: var(--mobile-nav-bg);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
       padding: 1.5rem 2rem;
@@ -637,7 +715,7 @@
 
     /* Terminal */
     .terminal {
-      background: #060e18;
+      background: var(--terminal-bg);
       border: 1px solid var(--border-2);
       border-radius: 12px;
       overflow: hidden;
@@ -706,7 +784,7 @@
       padding: 1.4rem 1.6rem;
       transition: border-color .2s, transform .2s;
     }
-    /* CHANGE 2: Experience cards — accent border + slide right */
+    /* CHANGE 2: Experience cards, accent border + slide right */
     .exp-card:hover { border-color: var(--accent); transform: translateX(4px); }
     .exp-top {
       display: flex;
@@ -739,7 +817,7 @@
     }
     .exp-card ul li::marker { color: var(--accent); }
 
-    /* ─── PROJECTS — 2-col grid ─── */
+    /* --- PROJECTS, 2-col grid --- */
     #projects { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .projects-grid {
       display: grid;
@@ -755,7 +833,7 @@
       flex-direction: column;
       transition: border-color .25s, transform .25s;
     }
-    /* CHANGE 3: Project cards — accent border + slide right (was translateY) */
+    /* CHANGE 3: Project cards, accent border + slide right (was translateY) */
     .project-card:hover { border-color: var(--accent); transform: translateX(4px); }
     .project-media {
       position: relative;
@@ -889,7 +967,7 @@
       align-items: flex-start;
       transition: border-color .2s, transform .2s;
     }
-    /* CHANGE 4: Cert cards — keep accent, change translateY to translateX */
+    /* CHANGE 4: Cert cards, keep accent, change translateY to translateX */
     .cert-card:hover { border-color: var(--accent); transform: translateX(4px); }
     .cert-icon {
       width: 48px; height: 48px;
@@ -923,7 +1001,7 @@
     .cert-badge.green { color: var(--green); background: var(--green-lo); border: 1px solid rgba(45,212,160,.2); }
     .cert-badge.amber { color: #ff9900; background: rgba(255,153,0,.08); border: 1px solid rgba(255,153,0,.2); }
 
-/* ─── SKILLS — card grid ─── */
+/* --- SKILLS, card grid --- */
 #skills { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 
 /* ─── PROJECT CASE STUDY EXPANDABLE ─── */
@@ -988,7 +1066,7 @@
   padding: 1.5rem 1.4rem 1.6rem;
   transition: border-color .2s, transform .2s;
 }
-/* CHANGE 5: Skill cards — accent border + slide right (was translateY) */
+/* CHANGE 5: Skill cards, accent border + slide right (was translateY) */
 .skill-card:hover { border-color: var(--accent); transform: translateX(4px); }
 .skill-card-icon {
   width: 44px; height: 44px;
@@ -1146,7 +1224,7 @@
   gap: .65rem;
   cursor: pointer;
 }
-/* CHANGE 8: Footer logo — same glow hover as nav logo in hero */
+/* CHANGE 8: Footer logo, same glow hover as nav logo in hero */
 .footer-logo:hover .nav-logo-badge {
   transform: translateY(-2px);
   border-color: rgba(0,200,245,.6);
@@ -1186,100 +1264,262 @@
     }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    /* ─── HOW I BUILD SYSTEMS — zig-zag flow ─── */
- #principles { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-
-.pipeline-wrap {
+    /* --- ENGINEERING WORKFLOW --- */
+#workflow {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.wf-intro {
+  max-width: 760px;
+  color: var(--muted);
+  font-size: .92rem;
+  line-height: 1.8;
+  margin-bottom: 2.25rem;
+}
+.wf-flow-shell {
+  position: relative;
+  min-height: 310px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  padding: 1rem;
+}
+.wf-flow-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.wf-flow-path-base {
+  fill: none;
+  stroke: var(--border-2);
+  stroke-width: 3;
+}
+.wf-flow-path-animated {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 10 14;
+  opacity: .72;
+  animation: wf-path-once 5.2s linear 1 both;
+}
+@keyframes wf-path-once {
+  from { stroke-dashoffset: 380; opacity: .15; }
+  20% { opacity: .85; }
+  to { stroke-dashoffset: 0; opacity: .5; }
+}
+.wf-node {
+  position: absolute;
+  width: 132px;
+  min-height: 82px;
+  transform: translate(-50%, -50%);
+  padding: .75rem .7rem;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--node-bg);
+  color: var(--text);
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 720px;
-  margin: 0 auto;
+  justify-content: center;
+  gap: .42rem;
+  text-align: center;
+  z-index: 2;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease, background .25s ease;
 }
-.pipe-stage {
-  width: 100%;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-left: 3px solid rgba(0,200,245,.5);
-  border-radius: 10px;
-  padding: 1.4rem 1.6rem;
-  display: grid;
-  grid-template-columns: 44px 1fr;
-  gap: 1rem;
-  align-items: flex-start;
-  transition: border-left-color .2s, transform .2s;
+.wf-node:hover,
+.wf-node.active {
+  transform: translate(-50%, calc(-50% - 4px));
+  border-color: var(--accent);
+  background: var(--surface-2);
+  box-shadow: 0 10px 28px rgba(0,200,245,.14);
 }
-.pipe-stage:hover { border-left-color: var(--accent); transform: translateX(5px); }
-.pipe-stage-num {
-  font-family: var(--mono);
-  font-size: .65rem;
-  font-weight: 700;
+.wf-node-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--accent);
   background: var(--accent-lo);
   border: 1px solid rgba(0,200,245,.2);
-  border-radius: 6px;
-  width: 36px; height: 36px;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
+  font-size: .86rem;
 }
-.pipe-stage-title {
+.wf-node-num {
+  position: absolute;
+  top: 7px;
+  left: 8px;
   font-family: var(--mono);
-  font-size: .92rem;
+  font-size: .59rem;
+  color: var(--dim);
+}
+.wf-node-title {
+  font-family: var(--mono);
+  font-size: .7rem;
   font-weight: 700;
-  color: var(--text);
-  letter-spacing: .02em;
-  margin-bottom: .4rem;
+  line-height: 1.35;
 }
-.pipe-stage-desc {
-  font-size: .84rem;
-  color: var(--muted);
-  line-height: 1.7;
-  margin-bottom: .75rem;
+.wf-panel {
+  background: var(--bg);
+  border: 1px solid var(--border-2);
+  border-radius: 10px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height .38s ease, opacity .3s ease, padding .3s ease, margin .3s ease;
+  margin-top: 0;
 }
-.pipe-stage-impl {
+.wf-panel.open {
+  max-height: 720px;
+  opacity: 1;
+  padding: 1.6rem 1.8rem;
+  margin-top: 1rem;
+}
+.wf-panel-row {
+  display: flex;
+  gap: .9rem;
+  margin-bottom: .9rem;
+  font-size: .86rem;
+  line-height: 1.65;
+}
+.wf-panel-row:last-child { margin-bottom: 0; }
+.wf-panel-key {
+  font-family: var(--mono);
+  color: var(--accent);
+  font-size: .72rem;
+  font-weight: 700;
+  min-width: 104px;
+  flex-shrink: 0;
+  padding-top: .2rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.wf-panel-val { color: var(--muted); }
+.wf-panel-list { margin: 0; padding-left: 1.1rem; color: var(--muted); }
+.wf-panel-list li { margin-bottom: .4rem; }
+.wf-panel-projects,
+.project-workflow-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.wf-proj-link,
+.project-workflow-link {
+  font-family: var(--mono);
+  font-size: .69rem;
+  color: var(--accent);
+  background: var(--accent-lo);
+  border: 1px solid rgba(0,200,245,.2);
+  padding: .32rem .62rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease, border-color .2s ease;
+}
+.wf-proj-link:hover,
+.project-workflow-link:hover {
+  transform: translateY(-2px);
+  background: var(--accent-md);
+  border-color: var(--accent);
+}
+.project-detail-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
   font-family: var(--mono);
   font-size: .73rem;
-  color: var(--accent);
-  background: rgba(0,200,245,.05);
-  border-left: 2px solid rgba(0,200,245,.3);
-  padding: .5rem .8rem;
-  border-radius: 0 5px 5px 0;
-  line-height: 1.55;
+  font-weight: 600;
+  color: var(--dim);
+  cursor: pointer;
+  padding: .62rem 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin-top: .75rem;
+  background: transparent;
+  text-align: left;
+  transition: color .2s ease, border-color .2s ease;
+  user-select: none;
 }
-.pipe-stage-impl::before { content: '// '; opacity: .5; }
-.pipe-connector {
-  height: 36px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
+.project-detail-toggle:hover { color: var(--accent); }
+.project-detail-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
-.pipe-connector-line {
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(0,200,245,.35), rgba(0,200,245,.1));
+.project-detail-toggle .detail-chevron {
+  margin-left: auto;
+  transition: transform .25s ease;
 }
-.pipe-connector-dot {
-  position: absolute;
-  top: -8px;
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--accent);
-  margin-left: -2.5px;
-  animation: flow-down 1.4s ease-in-out infinite;
+.project-detail-toggle.open .detail-chevron { transform: rotate(180deg); }
+.project-detail-body {
+  max-height: 0;
   opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  padding-top: 0;
+  transition: max-height .35s ease, opacity .22s ease, padding-top .25s ease, visibility 0s linear .35s;
 }
-.pipe-connector-dot:nth-child(3) { animation-delay: .7s; }
-@keyframes flow-down {
-  0%   { top: -8px; opacity: 0; }
-  15%  { opacity: .85; }
-  85%  { opacity: .85; }
-  100% { top: 100%; opacity: 0; }
+.project-detail-body.open {
+  max-height: 520px;
+  opacity: 1;
+  visibility: visible;
+  padding-top: .55rem;
+  transition: max-height .35s ease, opacity .22s ease, padding-top .25s ease, visibility 0s;
 }
-@media (max-width: 600px) {
-  .pipe-stage { grid-template-columns: 1fr; }
-  .pipe-stage-num { margin-bottom: .25rem; }
+.project-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+.project-workflow-map {
+  padding-top: .05rem;
+}
+.project-workflow-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.section-bridge {
+  margin-top: 2.8rem;
+  display: flex;
+  justify-content: center;
+}
+.section-bridge a {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  font-family: var(--mono);
+  font-size: .76rem;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: .48rem .9rem;
+  transition: transform .25s ease, border-color .25s ease, color .25s ease, background .25s ease;
+}
+.section-bridge a:hover {
+  transform: translateX(4px);
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-lo);
+}
+@keyframes wf-flash {
+  0% { box-shadow: 0 0 0 2px var(--accent); }
+  100% { box-shadow: 0 0 0 0 rgba(0,200,245,0); }
+}
+.project-card.wf-highlight { animation: wf-flash 1.4s ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  .wf-flow-path-animated { animation: none; }
+}
+
+@media (max-width: 900px) {
+  .wf-flow-shell { overflow-x: auto; min-height: 310px; }
+  .wf-flow-canvas { min-width: 1080px; min-height: 290px; position: relative; }
 }
 
     /* ─── REPO CARD ─── */
@@ -1299,7 +1539,7 @@
       border-color: rgba(0,200,245,.22); color: var(--muted);
       background: var(--accent-lo);
     }
-    /* CHANGE 7: skill-chip.built hover — match non-built HBase-style (full cyan, not var(--text)) */
+    /* CHANGE 7: skill-chip.built hover, match non-built HBase-style (full cyan, not var(--text)) */
     .skill-chip.built:hover { border-color: var(--accent); color: var(--accent); }
     .skill-chip.studied {
       background: transparent;
@@ -1356,14 +1596,15 @@
 </a>
       <ul class="nav-links">
         <li><a href="#about"          data-section="about">About</a></li>
-        <li><a href="#principles"     data-section="principles">Build</a></li>
-        <li><a href="#experience"     data-section="experience">Experience</a></li>
+        <li><a href="#workflow"       data-section="workflow">Workflow</a></li>
         <li><a href="#projects"       data-section="projects">Projects</a></li>
+        <li><a href="#experience"     data-section="experience">Experience</a></li>
         <li><a href="#certifications" data-section="certifications">Certs</a></li>
         <li><a href="#skills"         data-section="skills">Skills</a></li>
         <li><a href="#education"      data-section="education">Education</a></li>
         <li><a href="#contact"        data-section="contact">Contact</a></li>
         <li><a href="https://motahaaboheiba.github.io/Data_Engineer_Mohamed_Taha_AboHeiba_CV.pdf" class="nav-Resume" target="_blank"><i class="fa-regular fa-file-pdf"></i> Resume</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode"><i class="fa-solid fa-sun theme-sun"></i><i class="fa-solid fa-moon theme-moon"></i></button></li>
       </ul>
       <button class="nav-burger" id="burger" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -1373,9 +1614,9 @@
 
   <div class="mobile-nav" id="mobile-nav">
     <a href="#about"          onclick="closeMobile()">About</a>
-    <a href="#principles"     onclick="closeMobile()">How I Build</a>
-    <a href="#experience"     onclick="closeMobile()">Experience</a>
+    <a href="#workflow"       onclick="closeMobile()">Workflow</a>
     <a href="#projects"       onclick="closeMobile()">Projects</a>
+    <a href="#experience"     onclick="closeMobile()">Experience</a>
     <a href="#certifications" onclick="closeMobile()">Certs</a>
     <a href="#skills"         onclick="closeMobile()">Skills</a>
     <a href="#education"      onclick="closeMobile()">Education</a>
@@ -1398,13 +1639,6 @@
             Building data systems that are reliable by design,<br>
             maintainable in practice, and useful to the business.
           </p>
-          <div class="hero-signals">
-            <span class="hero-signal">Distributed Pipelines</span>
-            <span class="hero-signal">Lakehouse Architecture</span>
-            <span class="hero-signal">Data Warehousing</span>
-            <span class="hero-signal">Workflow Orchestration</span>
-            <span class="hero-signal">DE for AI Workflows</span>
-          </div>
           <div class="hero-actions">
             <a href="#projects" class="btn-primary">
               <i class="fa-solid fa-diagram-project"></i> View Projects
@@ -1452,7 +1686,7 @@
             <div class="metric-card">
               <div class="metric-icon"><i class="fa-solid fa-bolt"></i></div>
               <div>
-                <span class="metric-val"> Avg Latancy: ~240ms</span>
+                <span class="metric-val">~240ms Avg Latency</span>
                 <span class="metric-desc">End-to-end production latency<br>RAG pipeline · Hugging Face</span>
               </div>
             </div>
@@ -1479,25 +1713,24 @@
         <div class="about-text fade-up">
           <p>
             I approach data infrastructure as a systems problem, not a scripting task. A pipeline that runs once
-            is not the same as one that runs reliably every day — and the gap between those two things is where
+            is not the same as one that runs reliably every day, and the gap between those two things is where
             most engineering decisions live: <strong>schema contracts, failure handling, execution logging, partition strategy, layer separation.</strong>
           </p>
           <p>
-            My work spans the full data stack — from raw ingestion to governed, analytics-ready outputs.
+            My work spans the full data stack, from raw ingestion to governed, analytics-ready outputs.
             SQL Server warehouses with stored-procedure transformation layers. Databricks lakehouses built on
             the Medallion architecture with Unity Catalog for lineage. FastAPI retrieval systems backed by vector stores.
-            Each system is designed to be <strong>debuggable, reproducible, and maintainable</strong> — not just functional.
+            Each system is designed to be <strong>debuggable, reproducible, and maintainable</strong>, not just functional.
           </p>
           <p>
             Certified in Huawei HCIA-Big Data (best trainee across 30+ participants, first attempt) and AWS Cloud Practitioner.
-            Finishing a Computer Science degree at Fayoum University — GPA 3.4/4.0, graduating June 2026.
+            Computer Science degree, GPA 3.4/4.0.
           </p>
           <p>
-            Increasingly focused on <strong>DE for AI workflows</strong> — building and benchmarking vector store pipelines,
-            embedding systems, and retrieval APIs that run in production. The same reliability principles apply:
-            schema contracts at ingestion, measurable latency, and clean separation between indexing and serving layers.
-            That also means not trusting retrieval quality by assumption — measuring it with an offline evaluation harness
-            instead of taking a "the LLM sounds right" answer at face value.
+            Increasingly focused on <strong>DE for AI workflows</strong>: building and benchmarking vector store pipelines,
+            embedding systems, and retrieval APIs that run in production. Same reliability principles apply,
+            schema contracts at ingestion, measurable latency, and clean separation between indexing and serving.
+            Retrieval quality is measured with an offline evaluation harness, not assumed.
           </p>
           <a href="#contact" class="get-in-touch">
             <i class="fa-regular fa-paper-plane"></i> Get In Touch
@@ -1516,77 +1749,43 @@
           </div>
         </div>
       </div>
+      <div class="section-bridge fade-up">
+        <a href="#workflow">These principles shape every system I build <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
     </div>
   </section>
 
-  <!-- How I Build Systems -->
-  <section id="principles" class="section">
+  <!-- Engineering Workflow -->
+  <section id="workflow" class="section">
     <div class="container">
-      <div class="section-label">// how I build</div>
-      <h2 class="section-title">How I Build <em>Systems</em></h2>
+      <div class="section-label">// engineering workflow</div>
+      <h2 class="section-title">How I Engineer <em>Data Systems</em></h2>
       <div class="section-divider"></div>
-<div class="pipeline-wrap">
+      <p class="wf-intro fade-up">
+        A business question becomes a reliable data product through deliberate stages. Select any stage to see the reasoning, goal, principles, and projects that prove it in practice.
+      </p>
 
-  <div class="pipe-stage fade-up">
-    <div class="pipe-stage-num">01</div>
-    <div>
-      <div class="pipe-stage-title">Reliability First</div>
-      <div class="pipe-stage-desc">Correctness precedes performance. A pipeline that delivers wrong data quickly is worse than one that fails loudly at the boundary.</div>
-      <div class="pipe-stage-impl">From SQL DW project: per-step execution-time logging surfaces failures at the exact stored procedure — not buried in aggregate error output.</div>
+      <div class="wf-flow-shell fade-up">
+        <div class="wf-flow-canvas" id="wf-flow"></div>
+      </div>
+      <div class="wf-panel" id="wf-panel"></div>
+
+      <div class="section-bridge fade-up">
+        <a href="#projects">Here is how these principles become production systems <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
     </div>
-  </div>
-  <div class="pipe-connector"><div class="pipe-connector-line"></div><div class="pipe-connector-dot"></div><div class="pipe-connector-dot"></div></div>
+  </section>
 
-  <div class="pipe-stage fade-up" style="transition-delay:.07s">
-    <div class="pipe-stage-num">02</div>
-    <div>
-      <div class="pipe-stage-title">Observability by Design</div>
-      <div class="pipe-stage-desc">Logging and row-count validation are part of the initial design — not patched in after the first production incident.</div>
-      <div class="pipe-stage-impl">From Lakehouse project: record counts validated across all 3 medallion layers. SQL DW: each stored procedure logs its own execution duration to a dedicated log table.</div>
-    </div>
-  </div>
-  <div class="pipe-connector"><div class="pipe-connector-line"></div><div class="pipe-connector-dot"></div><div class="pipe-connector-dot"></div></div>
-
-  <div class="pipe-stage fade-up" style="transition-delay:.14s">
-    <div class="pipe-stage-num">03</div>
-    <div>
-      <div class="pipe-stage-title">Layer Separation</div>
-      <div class="pipe-stage-desc">Each zone — Bronze, Silver, Gold — is independently queryable and testable. Transformation logic doesn't bleed across boundaries.</div>
-      <div class="pipe-stage-impl">From Lakehouse project: Lakehouse Gold exposes a governed star schema via Unity Catalog views, fully decoupled from the ETL notebooks in Silver.</div>
-    </div>
-  </div>
-  <div class="pipe-connector"><div class="pipe-connector-line"></div><div class="pipe-connector-dot"></div><div class="pipe-connector-dot"></div></div>
-
-  <div class="pipe-stage fade-up" style="transition-delay:.21s">
-    <div class="pipe-stage-num">04</div>
-    <div>
-      <div class="pipe-stage-title">Schema Contracts</div>
-      <div class="pipe-stage-desc">Upstream schema changes must never silently corrupt downstream consumers. Validation belongs at the boundary, not at the point of failure.</div>
-      <div class="pipe-stage-impl">From Lakehouse project: Delta Lake schema enforcement rejects malformed records at ingestion — they cannot propagate past the Bronze layer.</div>
-    </div>
-  </div>
-  <div class="pipe-connector"><div class="pipe-connector-line"></div><div class="pipe-connector-dot"></div><div class="pipe-connector-dot"></div></div>
-
-  <div class="pipe-stage fade-up" style="transition-delay:.28s">
-    <div class="pipe-stage-num">05</div>
-    <div>
-      <div class="pipe-stage-title">Modular Composition</div>
-      <div class="pipe-stage-desc">Decomposable steps, not monolithic jobs. Each transformation unit can be tested, replaced, or rerun without touching the surrounding system.</div>
-      <div class="pipe-stage-impl">From SQL DW project: 17 stored procedures orchestrated by 2 master procedures — any single unit reruns independently, no full-pipeline restarts.</div>
-    </div>
-  </div>
-  <div class="pipe-connector"><div class="pipe-connector-line"></div><div class="pipe-connector-dot"></div><div class="pipe-connector-dot"></div></div>
-
-  <div class="pipe-stage fade-up" style="transition-delay:.35s">
-    <div class="pipe-stage-num">06</div>
-    <div>
-      <div class="pipe-stage-title">Measure, Don't Assume</div>
-      <div class="pipe-stage-desc">A system that "sounds right" isn't validated. Quality claims need a benchmark behind them, with a baseline to compare against.</div>
-      <div class="pipe-stage-impl">From EduMate-RAG: hybrid reranking change validated against a 73-query offline evaluation harness — Precision@5, Recall@5, and MRR measured before and after, not assumed.</div>
-    </div>
-  </div>
-
-</div>
+  <!-- Projects -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-label">// portfolio</div>
+      <h2 class="section-title"><em>Projects</em></h2>
+      <div class="section-divider"></div>
+      <div class="projects-grid" id="projects-container"></div>
+      <div class="section-bridge fade-up">
+        <a href="#experience">The systems are backed by hands-on engineering experience <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
     </div>
   </section>
 
@@ -1601,9 +1800,9 @@
           <div class="exp-card">
             <div class="exp-top">
               <span class="exp-role">AWS Cloud Data Engineer Trainee</span>
-              <span class="exp-badge">Oct 2025 — Dec 2025</span>
+              <span class="exp-badge">Oct 2025 to Dec 2025</span>
             </div>
-            <div class="exp-company">NTI — National Telecommunications Institute &nbsp;·&nbsp; Digital Egypt Youth Program</div>
+            <div class="exp-company">NTI, National Telecommunications Institute &nbsp;·&nbsp; Digital Egypt Youth Program</div>
             <ul>
               <li>Architected a multi-tier cloud data platform on AWS from S3 static hosting to a production-grade EC2/RDS/VPC architecture, applying Well-Architected Framework principles across compute, storage, and networking layers.</li>
               <li>Configured RDS Multi-AZ with automated failover and S3 data lifecycle policies (Standard to Infrequent Access to Glacier) for cost-optimised cloud storage management.</li>
@@ -1614,14 +1813,14 @@
           <div class="exp-card">
             <div class="exp-top">
               <span class="exp-role">Big Data Engineer Trainee</span>
-              <span class="exp-badge">Jul 2025 — Sep 2025</span>
+              <span class="exp-badge">Jul 2025 to Sep 2025</span>
             </div>
-            <div class="exp-company">NTI — National Telecommunications Institute &nbsp;·&nbsp; Huawei Big Data Program</div>
+            <div class="exp-company">NTI, National Telecommunications Institute &nbsp;·&nbsp; Huawei Big Data Program</div>
             <div class="exp-dates" style="margin-top:.3rem;margin-bottom:.7rem">
-              <span style="color:var(--green);font-weight:600">Best-Performing Trainee — Exam Voucher Awarded</span>
+              <span style="color:var(--green);font-weight:600">Best-Performing Trainee, Exam Voucher Awarded</span>
             </div>
             <ul>
-              <li>Awarded best-performing trainee across a cohort of 30+ and earned a Huawei exam voucher — passed the HCIA-Big Data certification on the first attempt.</li>
+              <li>Awarded best-performing trainee across a cohort of 30+ and earned a Huawei exam voucher, passing the HCIA-Big Data certification on the first attempt.</li>
               <li>Built GB-scale Spark batch pipelines on Hadoop (HDFS/YARN/Hive) and Kafka + Flink streaming pipelines for real-time log ingestion across 15+ hands-on labs.</li>
             </ul>
           </div>
@@ -1630,9 +1829,9 @@
           <div class="exp-card">
             <div class="exp-top">
               <span class="exp-role">Data Engineer Trainee</span>
-              <span class="exp-badge">Apr 2024 — Oct 2024</span>
+              <span class="exp-badge">Apr 2024 to Oct 2024</span>
             </div>
-            <div class="exp-company">DEPI — Digital Egypt Pioneers Initiative</div>
+            <div class="exp-company">DEPI, Digital Egypt Pioneers Initiative</div>
             <ul>
               <li>Built 4 SSIS ETL packages ingesting 7 CSV data sources into SQL Server via 17 stored procedures, automating data ingestion and transformation workflows end-to-end.</li>
               <li>Delivered a validated dataset of 70K records powering a customer churn model, achieving 97.4% accuracy, enabling data-driven retention strategies.</li>
@@ -1640,16 +1839,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects" class="section">
-    <div class="container">
-      <div class="section-label">// portfolio</div>
-      <h2 class="section-title"><em>Projects</em></h2>
-      <div class="section-divider"></div>
-      <div class="projects-grid" id="projects-container"></div>
     </div>
   </section>
 
@@ -1664,7 +1853,7 @@
           <div class="cert-icon huawei"><i class="fa-solid fa-satellite-dish"></i></div>
           <div>
             <div class="cert-org">Huawei Technologies</div>
-            <div class="cert-name">HCIA — Big Data Associate</div>
+            <div class="cert-name">HCIA, Big Data Associate</div>
             <div class="cert-meta">
               Issued <strong style="color:var(--accent)">Mar 2026</strong> &nbsp;·&nbsp; Valid until <strong style="color:var(--accent)">Mar 2029</strong><br>
               Cert No. 010101801855810426731409
@@ -1707,7 +1896,7 @@
           <span class="skill-chip built">Kafka</span>
           <span class="skill-chip built">ETL/ELT patterns</span>
           <span class="skill-chip built">Batch Processing</span>
-          <span class="skill-chip studied">Airflow</span>
+          <span class="skill-chip built">Airflow</span>
           <span class="skill-chip studied">Flink</span>
         </div>
       </div>
@@ -1722,13 +1911,14 @@
           <span class="skill-chip built">Dimensional Modeling</span>
           <span class="skill-chip studied">HDFS</span>
           <span class="skill-chip studied">HBase</span>
-          <span class="skill-chip studied">Snowflake Schema</span>
+          <span class="skill-chip built">Snowflake Schema</span>
+          <span class="skill-chip built">Galaxy Schema</span>
         </div>
       </div>
 
       <div class="skill-card fade-up" style="transition-delay:.1s">
         <div class="skill-card-icon"><i class="fa-brands fa-aws"></i></div>
-        <div class="skill-card-title">Cloud — AWS</div>
+        <div class="skill-card-title">Cloud (AWS)</div>
         <div class="skill-chips">
           <span class="skill-chip built">S3</span>
           <span class="skill-chip built">EC2</span>
@@ -1798,14 +1988,14 @@
       <div class="edu-card fade-up">
         <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
         <div>
-          <div class="edu-dates">Oct 2022 — Jun 2026</div>
-          <div class="edu-degree">Bachelor of Science — Computer Science</div>
+          <div class="edu-dates">Oct 2022 to Jun 2026</div>
+          <div class="edu-degree">Bachelor of Science, Computer Science</div>
           <div class="edu-uni">Fayoum University &nbsp;·&nbsp; Faculty of Computers and Artificial Intelligence</div>
           <div class="edu-desc">
             GPA 3.4 / 4.0. Core coursework: Big Data Engineering, Cloud Computing, Database Management Systems,
             Advanced SQL, Data Structures &amp; Algorithms, Machine Learning, Operating Systems (Linux, Docker),
             Python Programming, Data Visualization (Power BI).<br><br>
-            <strong style="color:var(--text)">Graduation Project:</strong> EduMate — a unified academic management platform with an RAG chatbot built on LangChain, ChromaDB, and Qdrant.
+            <strong style="color:var(--text)">Graduation Project:</strong> EduMate, a unified academic management platform with an RAG chatbot built on LangChain, ChromaDB, and Qdrant.
           </div>
         </div>
       </div>
@@ -1821,7 +2011,7 @@
       <div class="contact-grid">
         <div class="contact-intro fade-up">
           <p>Actively looking for Data Engineering, Big Data, and Cloud Data Engineering roles.
-          If you're building data infrastructure, pipelines, or lakehouses — reach out. I respond within 24 hours.</p>
+          If you're building data infrastructure, pipelines, or lakehouses, reach out. I respond within 24 hours.</p>
           <div class="contact-links">
             <a href="https://linkedin.com/in/mohamed-taha-abo-heiba" target="_blank" class="contact-link">
               <div class="contact-link-icon"><i class="fa-brands fa-linkedin-in"></i></div>
@@ -1884,7 +2074,7 @@
               <i class="fa-regular fa-paper-plane"></i> Send Message
             </button>
             <p id="form-status" style="margin-top:.75rem;font-size:.84rem;text-align:center;color:var(--green);display:none">
-              Message sent — I'll get back to you soon.
+              Message sent, I'll get back to you soon.
             </p>
           </form>
         </div>
@@ -1909,8 +2099,9 @@
 </div>
         <nav class="footer-nav">
           <a href="#about">About</a>
-          <a href="#experience">Experience</a>
+          <a href="#workflow">Workflow</a>
           <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
           <a href="#certifications">Certs</a>
           <a href="#skills">Skills</a>
           <a href="#contact">Contact</a>
@@ -1922,7 +2113,7 @@
           <a href="mailto:Mohamed-aboheiba@outlook.com"><i class="fa-regular fa-envelope"></i></a>
         </div>
         <div class="footer-copy">
-          Mohamed Taha Abo Heiba — Data Engineer — 2026
+          Mohamed Taha Abo Heiba, Data Engineer, 2026
         </div>
       </div>
     </div>
@@ -1935,7 +2126,24 @@
   const PROJECTS = [
     {
       num: '01',
-      title: 'E-Commerce Lakehouse — Databricks',
+      title: 'Retail Lakehouse Pipeline',
+      status: 'inprogress',
+      description: 'End-to-end lakehouse pipeline for retail data on Databricks, sourced from PostgreSQL via query-based incremental ingestion. dbt models a metadata-driven silver layer and a Galaxy Schema gold layer, fact_orders and fact_supplier_deliveries sharing conformed product and date dimensions. Airflow orchestrates the full chain end to end.',
+      tags: ['PostgreSQL', 'Databricks', 'Delta Lake', 'dbt', 'Airflow', 'Docker', 'Galaxy Schema', 'SCD Type 2'],
+      github: 'https://github.com/MoTahaAboHeiba/retail-lakehouse-pipeline',
+      live: null,
+      images: ['diagram'],
+      diagramType: 'retail',
+      caseStudy: {
+        problem: 'Retail OLTP data in Postgres needed a governed analytical layer supporting two independent business processes, sales and procurement, without duplicating dimensional logic between them.',
+        architecture: 'Postgres → Databricks bronze (query-based incremental ingestion) → dbt silver technical and business layers → dbt snapshots (SCD Type 2) → dbt gold Galaxy Schema (fact_orders + fact_supplier_deliveries sharing dim_products and dim_date) → Airflow (Docker) orchestration end to end.',
+        tradeoff: 'Chose query-based incremental ingestion over CDC since Databricks Free Edition is serverless-only and cannot provision the gateway CDC needs. Accepted scheduled polling and designed the snapshot logic around that limitation rather than treating it as a surprise.',
+        impact: 'Caught and fixed a 10x row inflation bug (300,513 rows against an expected grain of 30,021) caused by a non-unique join key, removing the join instead of forcing an unsupported relationship. Gold Galaxy Schema now serves Sales and Procurement from shared conformed dimensions.'
+      }
+    },
+    {
+      num: '02',
+      title: 'Databricks Lakehouse (E-Commerce)',
       status: 'complete',
       description: 'End-to-end lakehouse processing 200K+ records from 6 CRM and ERP sources, orchestrated via a 3-task Databricks Jobs workflow DAG. Bronze ingests raw data, Silver applies PySpark transformations across 6 notebooks, Gold delivers 1 Fact + 2 Dimension Delta Tables as a governed star schema in Unity Catalog.',
       tags: ['Databricks', 'PySpark', 'Spark SQL', 'Delta Lake', 'ETL', 'Unity Catalog', 'Star Schema', 'Medallion'],
@@ -1945,16 +2153,16 @@
       diagramType: 'lakehouse',
       caseStudy: {
         problem: '6 raw CRM/ERP CSV sources needed a governed, analytics-ready output layer with full lineage and reproducible transformations.',
-        architecture: 'Medallion architecture on Databricks — Bronze ingests raw, Silver cleansed via 6 PySpark notebooks orchestrated through a Databricks Jobs DAG, Gold exposes star schema via Unity Catalog views.',
-        tradeoff: 'Chose Delta Lake ACID guarantees over simpler Parquet — adds schema enforcement overhead but eliminates silent data corruption across layers.',
+        architecture: 'Medallion architecture on Databricks. Bronze ingests raw, Silver cleanses via 6 PySpark notebooks orchestrated through a Databricks Jobs DAG, Gold exposes a star schema via Unity Catalog views.',
+        tradeoff: 'Chose Delta Lake ACID guarantees over simpler Parquet: adds schema enforcement overhead but eliminates silent data corruption across layers.',
         impact: 'Gold layer delivers Fact_Sales (200K+ records) + 2 dimension tables, analytics-ready without any downstream transformation debt.'
       }
     },
     {
-      num: '02',
+      num: '03',
       title: 'SQL Server Data Warehouse',
       status: 'complete',
-      description: 'Fully scriptable data warehouse on SQL Server loading 60K+ records from 6 CRM and ERP sources. Two master stored procedures orchestrate full Bronze-to-Silver ETL across 17 modular stored procedures. Gold layer delivers a star schema as SQL views — each procedure logs its own execution duration, isolating failures to the exact step without full-pipeline restarts.',
+      description: 'Fully scriptable data warehouse on SQL Server loading 60K+ records from 6 CRM and ERP sources. Two master stored procedures orchestrate full Bronze-to-Silver ETL across 17 modular stored procedures. Gold layer delivers a star schema as SQL views. Each procedure logs its own execution duration, isolating failures to the exact step without full-pipeline restarts.',
       tags: ['SQL Server', 'T-SQL', 'Stored Procedures', 'Star Schema', 'Medallion', 'ETL'],
       github: 'https://github.com/MoTahaAboHeiba/SQL-Data-Warehouse-project',
       live: null,
@@ -1962,43 +2170,26 @@
       diagramType: 'sqldw',
       caseStudy: {
         problem: '6 disparate CRM/ERP CSV sources needed a structured warehouse with repeatable, debuggable ETL and a clean serving layer.',
-        architecture: '17 stored procedures orchestrated by 2 master procedures — Bronze via BULK INSERT, Silver via T-SQL transformation, Gold as SQL views (star schema).',
-        tradeoff: 'Chose stored-procedure orchestration over SSIS packages for this project — simpler to version-control and script end-to-end in a single SQL Server environment.',
-        impact: 'Per-step execution-time logging isolates failures to the exact stored procedure — eliminates full-pipeline re-runs to diagnose a single step. Gold star schema is directly queryable by downstream analytics tools.'
+        architecture: '17 stored procedures orchestrated by 2 master procedures. Bronze via BULK INSERT, Silver via T-SQL transformation, Gold as SQL views (star schema).',
+        tradeoff: 'Chose stored-procedure orchestration over SSIS packages for this project, simpler to version-control and script end-to-end in a single SQL Server environment.',
+        impact: 'Per-step execution-time logging isolates failures to the exact stored procedure, eliminating full-pipeline re-runs to diagnose a single step. Gold star schema is directly queryable by downstream analytics tools.'
       }
     },
     {
-      num: '03',
-      title: 'EduMate — RAG Pipeline & Retrieval Evaluation',
-      status: 'inprogress',
-      description: 'Data ingestion and retrieval API processing 24K+ document chunks through an automated PDF parsing → chunking → embedding → dual vector store pipeline, with a hybrid semantic + keyword reranker on top of retrieval. ~100ms vector search on local ChromaDB in development, ~300ms roundtrip on Qdrant Cloud in production. Validated against a 73-query offline evaluation harness measuring precision, recall, and MRR. Exposed through FastAPI with a dedicated stateless endpoint for .NET backend integration, plus a standalone mode for local testing.',
+      num: '04',
+      title: 'EduMate, RAG Pipeline & Retrieval Evaluation',
+      status: 'complete',
+      description: 'Data ingestion and retrieval API processing 24K+ document chunks through PDF parsing → chunking → embedding → dual vector store pipeline, with a hybrid semantic + keyword reranker on top of retrieval. Validated against a 73-query offline evaluation harness and exposed through FastAPI with a stateless endpoint for .NET backend integration.',
       tags: ['FastAPI', 'LangChain', 'ChromaDB', 'Qdrant', 'Python', 'Docker', 'RAG', 'Retrieval Evaluation'],
       github: 'https://github.com/MoTahaAboHeiba/EduMate-RAG',
       live: 'https://mo-taha-aboheiba-edumate-rag.hf.space',
       images: ['diagram', 'diagram'],
       diagramTypes: ['rag_flow', 'system_arch'],
       caseStudy: {
-        problem: 'Pure semantic retrieval over academic PDFs missed exact technical terms — a vector search can return conceptually similar chunks while skipping the one chunk that contains the precise term the answer hinges on. Retrieval quality also needed to be measured, not assumed, before trusting any change to the pipeline.',
-        architecture: 'PDF parse → chunking → embedding → dual vector store (ChromaDB local / Qdrant Cloud prod) → retrieval optimizer combining semantic similarity with keyword-overlap reranking and deduplication → Groq Llama 3.3 70B → FastAPI, with a separate stateless endpoint contract for .NET backend integration (caps conversation history to the last 5 Q&A pairs).',
-        tradeoff: 'Run ChromaDB locally for cost-free development and Qdrant Cloud in production — chosen after measuring both: ~100ms local vector search vs ~300ms Qdrant roundtrip, an acceptable cost for managed scaling and persistence.',
-        impact: 'The first hybrid reranking pass quietly dropped short technical acronyms — CPU, RAM, OS — because the keyword filter treated 2-3 letter tokens as noise and stripped exactly the domain-critical terms semantic search needed backup on. Caught and fixed by correcting the keyword filter, then re-validated on the 73-query offline evaluation harness: Precision@5 +4.92%, Recall@5 +3.37%, MRR +1.23% over the non-reranked baseline.'
-      }
-    },
-    {
-      num: '04',
-      title: 'Online Retail Analytics Dashboard',
-      status: 'complete',
-      description: 'Power BI dashboard transforming 541K+ transactions into actionable insights. Power Query ETL removes 135K null IDs, 10.6K invalid quantities, and 9.3K cancellations — engineers 8 new features. Five DAX measures power 3 dashboard pages over £9.73M revenue across 4,372 customers in 38 countries.',
-      tags: ['Power BI', 'Power Query', 'DAX', 'ETL', 'Dashboard Design'],
-      github: 'https://github.com/MoTahaAboHeiba/Online-Retail-PowerBi-Report',
-      live: 'https://app.powerbi.com/groups/me/reports/36646a6f-dcc0-471f-b6ee-9574f801efcc/22cdcbc6704b728654db?ctid=5f593c84-cad4-46c8-b3de-321c3e829a99&experience=power-bi',
-      images: ['diagram'],
-      diagramType: 'powerbi',
-      caseStudy: {
-        problem: '541K raw transactions with data quality issues needed cleaning and a business-oriented analytical layer for revenue and customer analysis.',
-        architecture: 'Power Query ETL (null removal, invalid-quantity filtering, cancellation exclusion, 8 feature columns) → DAX model (5 measures) → 3-page dashboard.',
-        tradeoff: 'All transformation logic kept in Power Query M rather than upstream SQL — keeps the report self-contained and portable, at the cost of refresh-time computation.',
-        impact: '£9.73M revenue analysis across 4,372 customers in 38 countries; dashboard used directly for retention and geographic expansion decision support.'
+        problem: 'Pure semantic retrieval over academic PDFs missed exact technical terms, and retrieval quality needed measurement, not assumption.',
+        architecture: 'PDF parse → chunking → embedding → dual vector store (ChromaDB local, Qdrant Cloud production) → hybrid semantic + keyword reranker → FastAPI, with a stateless endpoint contract for .NET integration.',
+        tradeoff: 'ChromaDB locally for cost-free development, Qdrant Cloud in production for persistence across server restarts, chosen after measuring both (~100ms local vs ~300ms Qdrant roundtrip).',
+        impact: 'First reranking pass dropped short acronyms (CPU, RAM, OS) via an overly aggressive keyword filter. Fixed and re-validated on a 73-query harness: Precision@5 +4.92%, Recall@5 +3.37%, MRR +1.23%.'
       }
     }
   ];
@@ -2008,6 +2199,90 @@
   ══════════════════════════ */
   function buildDiagram(type) {
     const diagrams = {
+      retail: `<svg viewBox="0 0 780 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+  <defs>
+    <marker id="arr-rt" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="rgba(0,200,245,.5)"/></marker>
+  </defs>
+  <rect width="780" height="360" fill="#07111c"/>
+
+  <!-- Secondary sources -->
+  <rect x="18" y="58" width="126" height="82" rx="9" fill="#0c1621" stroke="#1b2d42" stroke-width="1.5"/>
+  <circle cx="43" cy="86" r="16" fill="rgba(74,144,217,.12)" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="43" y="91" text-anchor="middle" fill="#4a90d9" font-size="10" font-weight="800" font-family="JetBrains Mono,monospace">PG</text>
+  <text x="87" y="83" text-anchor="middle" fill="#dde8f5" font-size="11" font-weight="700" font-family="JetBrains Mono,monospace">PostgreSQL</text>
+  <text x="87" y="101" text-anchor="middle" fill="#3d5570" font-size="8.5" font-family="JetBrains Mono,monospace">query-based</text>
+  <text x="87" y="115" text-anchor="middle" fill="#3d5570" font-size="8.5" font-family="JetBrains Mono,monospace">incremental · cursor + PK</text>
+
+  <rect x="18" y="190" width="126" height="82" rx="9" fill="#0c1621" stroke="#1b2d42" stroke-width="1.5"/>
+  <path d="M33,214 C33,208 39,204 46,204 C53,204 59,208 59,214 L59,248 C59,254 53,258 46,258 C39,258 33,254 33,248 Z" fill="none" stroke="#f5a42b" stroke-width="1.8"/>
+  <path d="M33,214 C33,220 39,224 46,224 C53,224 59,220 59,214" fill="none" stroke="#f5a42b" stroke-width="1.5"/>
+  <text x="95" y="215" text-anchor="middle" fill="#dde8f5" font-size="11" font-weight="700" font-family="JetBrains Mono,monospace">AWS S3</text>
+  <text x="95" y="233" text-anchor="middle" fill="#3d5570" font-size="8.5" font-family="JetBrains Mono,monospace">secondary source</text>
+  <text x="95" y="247" text-anchor="middle" fill="#3d5570" font-size="8.5" font-family="JetBrains Mono,monospace">Auto Loader</text>
+
+  <!-- Databricks umbrella -->
+  <rect x="168" y="24" width="492" height="270" rx="14" fill="rgba(255,54,33,.03)" stroke="rgba(255,54,33,.4)" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <g transform="translate(186,29)">
+    <path d="M2,4 L10,0 L18,4 L10,8 Z" fill="#ff5a3c"/>
+    <path d="M2,10 L10,6 L18,10 L10,14 Z" fill="#ff5a3c" opacity=".75"/>
+    <path d="M2,16 L10,12 L18,16 L10,20 Z" fill="#ff5a3c" opacity=".5"/>
+  </g>
+  <text x="210" y="43" fill="#ff5a3c" font-size="10.5" font-weight="700" font-family="JetBrains Mono,monospace">DATABRICKS LAKEHOUSE</text>
+
+  <!-- Bronze -->
+  <rect x="188" y="98" width="116" height="110" rx="9" fill="#0c1621" stroke="#1b2d42" stroke-width="1.5"/>
+  <text x="246" y="123" text-anchor="middle" fill="#00c8f5" font-size="12" font-weight="700" font-family="JetBrains Mono,monospace">BRONZE</text>
+  <text x="246" y="143" text-anchor="middle" fill="#3d5570" font-size="9" font-family="JetBrains Mono,monospace">Delta Lake</text>
+  <text x="246" y="159" text-anchor="middle" fill="#3d5570" font-size="9" font-family="JetBrains Mono,monospace">incremental</text>
+  <text x="246" y="175" text-anchor="middle" fill="#3d5570" font-size="9" font-family="JetBrains Mono,monospace">cursor + PK / Auto Loader</text>
+
+  <!-- Silver -->
+  <rect x="330" y="83" width="130" height="140" rx="9" fill="#0c1621" stroke="#1b2d42" stroke-width="1.5"/>
+  <text x="395" y="108" text-anchor="middle" fill="#00c8f5" font-size="12" font-weight="700" font-family="JetBrains Mono,monospace">dbt SILVER</text>
+  <text x="395" y="128" text-anchor="middle" fill="#3d5570" font-size="9" font-family="JetBrains Mono,monospace">technical layer</text>
+  <text x="395" y="144" text-anchor="middle" fill="#3d5570" font-size="9" font-family="JetBrains Mono,monospace">metadata-driven</text>
+  <text x="395" y="160" text-anchor="middle" fill="#3d5570" font-size="9" font-family="JetBrains Mono,monospace">OBT business</text>
+  <text x="395" y="178" text-anchor="middle" fill="#3d5570" font-size="9" font-family="JetBrains Mono,monospace">snapshots · SCD2</text>
+
+  <!-- Gold -->
+  <rect x="486" y="55" width="150" height="200" rx="10" fill="#071624" stroke="rgba(0,200,245,.3)" stroke-width="1.5"/>
+  <text x="561" y="80" text-anchor="middle" fill="#00c8f5" font-size="12.5" font-weight="700" font-family="JetBrains Mono,monospace">GOLD · Galaxy Schema</text>
+  <rect x="500" y="95" width="122" height="40" rx="6" fill="#0c1621" stroke="#1b2d42" stroke-width="1"/>
+  <text x="561" y="113" text-anchor="middle" fill="#dde8f5" font-size="9.5" font-weight="600" font-family="JetBrains Mono,monospace">fact_orders</text>
+  <text x="561" y="127" text-anchor="middle" fill="#3d5570" font-size="8" font-family="JetBrains Mono,monospace">sales grain</text>
+  <rect x="500" y="143" width="122" height="40" rx="6" fill="#0c1621" stroke="#1b2d42" stroke-width="1"/>
+  <text x="561" y="161" text-anchor="middle" fill="#dde8f5" font-size="9" font-weight="600" font-family="JetBrains Mono,monospace">fact_supplier_deliveries</text>
+  <text x="561" y="175" text-anchor="middle" fill="#3d5570" font-size="8" font-family="JetBrains Mono,monospace">delivery grain</text>
+  <rect x="500" y="191" width="122" height="50" rx="6" fill="#0c1621" stroke="#1b2d42" stroke-width="1"/>
+  <text x="561" y="209" text-anchor="middle" fill="#2dd4a0" font-size="8.8" font-weight="600" font-family="JetBrains Mono,monospace">dim_products</text>
+  <text x="561" y="224" text-anchor="middle" fill="#2dd4a0" font-size="8.8" font-weight="600" font-family="JetBrains Mono,monospace">dim_date</text>
+  <text x="561" y="237" text-anchor="middle" fill="#1b2d42" font-size="7.5" font-family="JetBrains Mono,monospace">conformed dimensions</text>
+
+  <!-- Serving -->
+  <rect x="670" y="98" width="92" height="110" rx="9" fill="#0c1621" stroke="#1b2d42" stroke-width="1.5"/>
+  <text x="716" y="123" text-anchor="middle" fill="#2dd4a0" font-size="11.5" font-weight="700" font-family="JetBrains Mono,monospace">SERVING</text>
+  <text x="716" y="145" text-anchor="middle" fill="#3d5570" font-size="8.5" font-family="JetBrains Mono,monospace">analytics</text>
+  <text x="716" y="159" text-anchor="middle" fill="#3d5570" font-size="8.5" font-family="JetBrains Mono,monospace">facts + dims</text>
+  <text x="716" y="173" text-anchor="middle" fill="#3d5570" font-size="8.5" font-family="JetBrains Mono,monospace">governed gold</text>
+
+  <!-- Source flows -->
+  <path d="M144,99 C158,99 166,112 188,125" fill="none" stroke="rgba(74,144,217,.5)" stroke-width="2" marker-end="url(#arr-rt)"/>
+  <path d="M144,231 C160,231 170,190 188,181" fill="none" stroke="rgba(245,164,43,.5)" stroke-width="2" marker-end="url(#arr-rt)"/>
+  <path d="M304,153 L330,153" fill="none" stroke="rgba(0,200,245,.35)" stroke-width="2" marker-end="url(#arr-rt)"/>
+  <path d="M460,153 L486,153" fill="none" stroke="rgba(0,200,245,.35)" stroke-width="2" marker-end="url(#arr-rt)"/>
+  <path d="M636,153 L670,153" fill="none" stroke="rgba(45,212,160,.4)" stroke-width="2" marker-end="url(#arr-rt)"/>
+
+  <!-- Animated flow -->
+  <circle r="4" fill="#4a90d9"><animateMotion dur="1.8s" repeatCount="indefinite" path="M144,99 C158,99 166,112 188,125"/><animate attributeName="opacity" values="0;1;0" dur="1.8s" repeatCount="indefinite"/></circle>
+  <circle r="4" fill="#f5a42b"><animateMotion dur="1.8s" repeatCount="indefinite" begin=".5s" path="M144,231 C160,231 170,190 188,181"/><animate attributeName="opacity" values="0;1;0" dur="1.8s" repeatCount="indefinite" begin=".5s"/></circle>
+  <circle r="4" fill="#00c8f5"><animateMotion dur="1.6s" repeatCount="indefinite" begin=".9s" path="M304,153 L330,153"/><animate attributeName="opacity" values="0;1;0" dur="1.6s" repeatCount="indefinite" begin=".9s"/></circle>
+  <circle r="4" fill="#2dd4a0"><animateMotion dur="1.6s" repeatCount="indefinite" begin="1.2s" path="M460,153 L486,153"/><animate attributeName="opacity" values="0;1;0" dur="1.6s" repeatCount="indefinite" begin="1.2s"/></circle>
+  <circle r="4" fill="#2dd4a0"><animateMotion dur="1.6s" repeatCount="indefinite" begin="1.5s" path="M636,153 L670,153"/><animate attributeName="opacity" values="0;1;0" dur="1.6s" repeatCount="indefinite" begin="1.5s"/></circle>
+
+  <!-- Orchestration -->
+  <rect x="18" y="315" width="744" height="30" rx="8" fill="#0c1621" stroke="#1b2d42" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="390" y="335" text-anchor="middle" fill="#f5a42b" font-size="10" font-weight="600" font-family="JetBrains Mono,monospace">Airflow (Docker) orchestrates PostgreSQL + S3 ingestion → dbt → snapshots → Gold</text>
+</svg>`,
       lakehouse: `<svg viewBox="0 0 780 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
   <defs>
     <marker id="arr-lh" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="rgba(0,200,245,.5)"/></marker>
@@ -2321,7 +2596,7 @@
       <path d="M0,0 L0,6 L6,3 z" fill="rgba(61,85,112,.5)"/>
     </marker>
   </defs>
-  <text x="20" y="25" fill="#3d5570" font-size="11" font-weight="700" font-family="JetBrains Mono,monospace">LAYER 1 — CLIENT</text>
+  <text x="20" y="25" fill="#3d5570" font-size="11" font-weight="700" font-family="JetBrains Mono,monospace">LAYER 1, CLIENT</text>
   <rect x="10" y="30" width="760" height="70" rx="4" fill="#0c1621" stroke="#1b2d42" stroke-width="0.5" stroke-dasharray="2 2"/>
   <rect x="80" y="40" width="200" height="50" rx="8" fill="#0c1621" stroke="#1b2d42" stroke-width="1.5"/>
   <text x="180" y="61" text-anchor="middle" fill="#00c8f5" font-size="13" font-weight="700" font-family="JetBrains Mono,monospace">Flutter Mobile App</text>
@@ -2329,7 +2604,7 @@
   <rect x="480" y="40" width="200" height="50" rx="8" fill="#0c1621" stroke="#1b2d42" stroke-width="1.5"/>
   <text x="580" y="61" text-anchor="middle" fill="#00c8f5" font-size="13" font-weight="700" font-family="JetBrains Mono,monospace">React Admin Web</text>
   <text x="580" y="79" text-anchor="middle" fill="#3d5570" font-size="9" font-family="JetBrains Mono,monospace">Staff: users, courses, reports</text>
-  <text x="20" y="115" fill="#3d5570" font-size="11" font-weight="700" font-family="JetBrains Mono,monospace">LAYER 2 — API / BACKEND</text>
+  <text x="20" y="115" fill="#3d5570" font-size="11" font-weight="700" font-family="JetBrains Mono,monospace">LAYER 2, API / BACKEND</text>
   <rect x="10" y="120" width="760" height="70" rx="4" fill="#0c1621" stroke="#1b2d42" stroke-width="0.5" stroke-dasharray="2 2"/>
   <rect x="40" y="130" width="700" height="50" rx="8" fill="#0c1621" stroke="#1b2d42" stroke-width="1.5"/>
   <text x="390" y="151" text-anchor="middle" fill="#00c8f5" font-size="13" font-weight="700" font-family="JetBrains Mono,monospace">.NET 10 Backend API</text>
@@ -2342,7 +2617,7 @@
   <circle r="4" fill="#00c8f5"><animateMotion dur="1.5s" repeatCount="indefinite" begin="0.8s" path="M180,90 L180,130"/><animate attributeName="opacity" values="0;1;0" dur="1.5s" repeatCount="indefinite" begin="0.8s"/></circle>
   <circle r="4" fill="#00c8f5"><animateMotion dur="1.5s" repeatCount="indefinite" path="M580,90 L580,130"/><animate attributeName="opacity" values="0;1;0" dur="1.5s" repeatCount="indefinite"/></circle>
   <circle r="4" fill="#00c8f5"><animateMotion dur="1.5s" repeatCount="indefinite" begin="0.8s" path="M580,90 L580,130"/><animate attributeName="opacity" values="0;1;0" dur="1.5s" repeatCount="indefinite" begin="0.8s"/></circle>
-  <text x="20" y="205" fill="#3d5570" font-size="11" font-weight="700" font-family="JetBrains Mono,monospace">LAYER 3 — DATA &amp; AI SERVICES</text>
+  <text x="20" y="205" fill="#3d5570" font-size="11" font-weight="700" font-family="JetBrains Mono,monospace">LAYER 3, DATA &amp; AI SERVICES</text>
   <rect x="10" y="210" width="760" height="80" rx="4" fill="#0c1621" stroke="#1b2d42" stroke-width="0.5" stroke-dasharray="2 2"/>
   <rect x="60" y="225" width="240" height="50" rx="8" fill="#0c1621" stroke="#1b2d42" stroke-width="1.5"/>
   <text x="180" y="246" text-anchor="middle" fill="#00c8f5" font-size="13" font-weight="700" font-family="JetBrains Mono,monospace">SQL Server Database</text>
@@ -2366,7 +2641,7 @@
   <circle r="4" fill="#f5a42b"><animateMotion dur="1.8s" repeatCount="indefinite" begin="0.8s" path="M530,180 L580,225"/><animate attributeName="opacity" values="0;1;0" dur="1.8s" repeatCount="indefinite" begin="0.8s"/></circle>
   <circle r="4" fill="#f5a42b"><animateMotion dur="1.8s" repeatCount="indefinite" path="M580,225 L530,180"/><animate attributeName="opacity" values="0;1;0" dur="1.8s" repeatCount="indefinite"/></circle>
   <circle r="4" fill="#f5a42b"><animateMotion dur="1.8s" repeatCount="indefinite" begin="0.8s" path="M580,225 L530,180"/><animate attributeName="opacity" values="0;1;0" dur="1.8s" repeatCount="indefinite" begin="0.8s"/></circle>
-  <text x="20" y="305" fill="#3d5570" font-size="11" font-weight="700" font-family="JetBrains Mono,monospace">LAYER 4 — VECTOR STORE &amp; DATASET</text>
+  <text x="20" y="305" fill="#3d5570" font-size="11" font-weight="700" font-family="JetBrains Mono,monospace">LAYER 4, VECTOR STORE &amp; DATASET</text>
   <rect x="10" y="310" width="760" height="60" rx="4" fill="#0c1621" stroke="#1b2d42" stroke-width="0.5" stroke-dasharray="2 2"/>
   <rect x="430" y="315" width="300" height="50" rx="8" fill="#0c1621" stroke="#1b2d42" stroke-width="1.5"/>
   <text x="580" y="336" text-anchor="middle" fill="#00c8f5" font-size="13" font-weight="700" font-family="JetBrains Mono,monospace">Vector Database</text>
@@ -2415,7 +2690,7 @@ if (img === 'diagram') {
         <button class="carousel-btn next" onclick="carouselMove(${idx},1)"><i class="fa-solid fa-chevron-right"></i></button>
         <div class="carousel-nav">${dots}</div>` : '';
       return `
-<div class="project-card fade-up" style="transition-delay:${idx*0.08}s">
+<div class="project-card fade-up" id="project-card-${idx}" style="transition-delay:${idx*0.08}s">
   <div class="project-media" id="media-${idx}">
     <span class="project-num">// ${p.num}</span>
     <span class="project-status ${statusClass}">${statusLabel}</span>
@@ -2424,11 +2699,32 @@ if (img === 'diagram') {
   <div class="project-body">
     <div class="project-title">${p.title}</div>
     <p class="project-desc">${p.description}</p>
-    <div class="project-tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
     <div class="project-links">
       <a href="${p.github}" target="_blank" class="project-link"><i class="fa-brands fa-github"></i> GitHub</a>
       ${p.live ? `<a href="${p.live}" target="_blank" class="project-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>` : ''}
     </div>
+    <button type="button" class="project-detail-toggle" id="project-tech-toggle-${idx}" onclick="toggleProjectDetail('tech', ${idx})" aria-expanded="false" aria-controls="project-tech-body-${idx}">
+      <i class="fa-solid fa-code" style="font-size:.7rem"></i> Tech Stack
+      <i class="fa-solid fa-chevron-down detail-chevron" aria-hidden="true"></i>
+    </button>
+    <div class="project-detail-body" id="project-tech-body-${idx}">
+      <div class="project-tech-tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+    </div>
+    ${(() => {
+      const stageIndexes = WORKFLOW_STAGES
+        .map((stage, stageIdx) => stage.projects.includes(idx) ? stageIdx : -1)
+        .filter(stageIdx => stageIdx >= 0);
+      if (!stageIndexes.length) return '';
+      return `<button type="button" class="project-detail-toggle" id="project-workflow-toggle-${idx}" onclick="toggleProjectDetail('workflow', ${idx})" aria-expanded="false" aria-controls="project-workflow-body-${idx}">
+        <i class="fa-solid fa-diagram-project" style="font-size:.7rem"></i> Workflow Stages Demonstrated
+        <i class="fa-solid fa-chevron-down detail-chevron" aria-hidden="true"></i>
+      </button>
+      <div class="project-detail-body project-workflow-map" id="project-workflow-body-${idx}">
+        <div class="project-workflow-links">
+          ${stageIndexes.map(stageIdx => `<button type="button" class="project-workflow-link" onclick="event.stopPropagation(); jumpToWorkflow(${stageIdx})">${WORKFLOW_STAGES[stageIdx].title}</button>`).join('')}
+        </div>
+      </div>`;
+    })()}
     ${p.caseStudy ? `
     <div class="case-study-toggle" id="cs-toggle-${idx}" onclick="toggleCaseStudy(${idx})">
       <i class="fa-solid fa-layer-group" style="font-size:.7rem"></i> Engineering Details
@@ -2595,6 +2891,10 @@ if (img === 'diagram') {
     const out = document.getElementById('term-output');
     if (!out) return;
     const lines = [
+      { t: 'cmd',    v: ' whoami' },
+      { t: 'nl' },
+      { t: 'plain',  v: 'Mohamed Taha Abo Heiba' },
+      { t: 'nl' },
       { t: 'cmd',    v: ' cat profile.json' },
       { t: 'nl' },
       { t: 'plain',  v: '{' },
@@ -2604,8 +2904,7 @@ if (img === 'diagram') {
       { t: 'kv',     k: '  "gpa"',          v: '"3.4 / 4.0"' },
       { t: 'kv',     k: '  "certs"',        v: '["AWS CLF-C02", "HCIA-Big Data"]' },
       { t: 'kv',     k: '  "achievement"',  v: '"Best Trainee @ NTI (30+ cohort)"' },
-      { t: 'kv',     k: '  "stack"',        v: '["PySpark", "Databricks", "SQL Server"]' },
-      { t: 'kv',     k: '  "rag_eval"',     v: '"73-query offline harness"' },
+      { t: 'kv',     k: '  "stack"',        v: '["PySpark", "Databricks", "Airflow", "SQL Server"]' },
       { t: 'kvbool', k: '  "status"',       v: '"open_to_work"' },
       { t: 'plain',  v: '}' },
       { t: 'nl' },
@@ -2699,6 +2998,20 @@ if (img === 'diagram') {
   });
 
   /* ══════════════════════════
+     PROJECT DETAIL TOGGLES
+  ══════════════════════════ */
+  function toggleProjectDetail(type, idx) {
+    const toggle = document.getElementById('project-' + type + '-toggle-' + idx);
+    const body = document.getElementById('project-' + type + '-body-' + idx);
+    if (!toggle || !body) return;
+
+    const isOpen = !body.classList.contains('open');
+    body.classList.toggle('open', isOpen);
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  }
+
+  /* ══════════════════════════
      CASE STUDY TOGGLE
   ══════════════════════════ */
   function toggleCaseStudy(idx) {
@@ -2709,8 +3022,243 @@ if (img === 'diagram') {
     body.classList.toggle('open');
   }
 
+  /* ══════════════════════════
+     ENGINEERING WORKFLOW
+  ══════════════════════════ */
+  const WORKFLOW_STAGES = [
+    {
+      num: '01',
+      title: 'Business Need',
+      why: "A pipeline that starts with a data source instead of a question ends up governed by whatever the source happens to expose, not by what the business actually needs to decide.",
+      goal: "Translate a stakeholder question into a measurable pipeline requirement before writing any ingestion code.",
+      principles: [
+        "Every ingestion source maps to a business question, not the other way around.",
+        "Scope is set by the decision the data supports, not by what happens to be easiest to pull."
+      ],
+      projects: []
+    },
+    {
+      num: '02',
+      title: 'Data Ingestion',
+      why: "Ingestion is where bad data enters the system for the first time. If it's not caught here, it's caught downstream, more expensively.",
+      goal: "Move data from the source system into the platform without losing or duplicating a record, and without silently accepting a source outage as normal.",
+      principles: [
+        "Cursor column plus primary key beats naive full reloads at scale.",
+        "Idempotent loads: rerunning a failed load never double-counts.",
+        "CDC isn't always available. Know the fallback and its tradeoff before you need it."
+      ],
+      projects: [0, 1, 2]
+    },
+    {
+      num: '03',
+      title: 'Storage & Organization',
+      why: "Raw and cleansed data are different assets with different guarantees. Collapsing them into one layer means a bad transformation corrupts the only copy of the truth.",
+      goal: "Keep an immutable, queryable raw layer, separate from anything transformation logic touches.",
+      principles: [
+        "Bronze is never overwritten in place, only appended or merged with history preserved.",
+        "Delta Lake schema enforcement rejects malformed records at the boundary, before they propagate."
+      ],
+      projects: [0, 1]
+    },
+    {
+      num: '04',
+      title: 'Transformation',
+      why: "Monolithic transformation jobs are unreadable and untestable. A pipeline you can only debug in production is not a pipeline you can trust.",
+      goal: "Decompose transformation into modular, independently testable units, whether that's stored procedures, PySpark notebooks, or dbt models.",
+      principles: [
+        "Metadata-driven transformation: a config change, not a code change, for a new source table.",
+        "Each unit reruns independently, no full-pipeline restart required."
+      ],
+      projects: [0, 1, 2]
+    },
+    {
+      num: '05',
+      title: 'Data Modeling',
+      why: "The model has to match the query pattern, not the shape the source system happened to store it in.",
+      goal: "Design a serving-layer schema, star, snowflake, or galaxy, that matches how the business actually asks questions of the data.",
+      principles: [
+        "Snowflake when a dimension's own history shouldn't distort a shared entity's grain.",
+        "Galaxy Schema when two business processes are genuinely independent, don't force them into one fact table.",
+        "SCD Type 2 where history matters, SCD Type 1 where it doesn't."
+      ],
+      projects: [0, 1, 2]
+    },
+    {
+      num: '06',
+      title: 'Data Quality',
+      why: "A green dbt run confirms the model executed. It does not confirm the numbers are right.",
+      goal: "Validate grain, row counts, and referential integrity independently of whether the job reported success.",
+      principles: [
+        "Row count validated against the expected grain, not just against the source count.",
+        "Measure, don't assume: a benchmark needs a baseline to compare against."
+      ],
+      projects: [0, 3]
+    },
+    {
+      num: '07',
+      title: 'Orchestration',
+      why: "A pipeline that only runs when someone remembers to run it isn't a pipeline. It's a manual process with extra steps.",
+      goal: "Chain ingestion through modeling as a single DAG with retries and dependency ordering, with no transformation logic living inside orchestration code.",
+      principles: [
+        "No transformation logic inside a DAG task, it triggers, it doesn't transform.",
+        "CI gates every merge on test results, not on a person remembering to run them."
+      ],
+      projects: [0, 1, 2]
+    },
+    {
+      num: '08',
+      title: 'Serving & Consumption',
+      why: "Consumers should never query raw or half-transformed tables. A governed read layer is the contract between the pipeline and everyone downstream.",
+      goal: "Expose a stable, documented interface, SQL views, Unity Catalog tables, or an API, so downstream consumers aren't coupled to internal pipeline structure.",
+      principles: [
+        "Gold is a governed read layer, not a shortcut back into Silver.",
+        "A stateless API contract for downstream integration is still a serving-layer decision."
+      ],
+      projects: [0, 1, 2, 3]
+    }
+  ];
+
+  let wfOpenIdx = null;
+
+  function renderWorkflow() {
+    const flow = document.getElementById('wf-flow');
+    if (!flow) return;
+
+    const points = [
+      { x: 6,  y: 59 },
+      { x: 18, y: 31 },
+      { x: 31, y: 55 },
+      { x: 44, y: 29 },
+      { x: 57, y: 54 },
+      { x: 70, y: 30 },
+      { x: 83, y: 55 },
+      { x: 95, y: 34 }
+    ];
+    const icons = [
+      'fa-bullseye',
+      'fa-database',
+      'fa-layer-group',
+      'fa-code-branch',
+      'fa-diagram-project',
+      'fa-shield-halved',
+      'fa-gears',
+      'fa-chart-line'
+    ];
+
+    const path = points.map((p, i) => {
+      const x = p.x * 12;
+      const y = p.y * 3;
+      if (i === 0) return `M ${x} ${y}`;
+      const prev = points[i - 1];
+      const px = prev.x * 12;
+      const py = prev.y * 3;
+      const mid = (px + x) / 2;
+      return `C ${mid} ${py}, ${mid} ${y}, ${x} ${y}`;
+    }).join(' ');
+
+    const nodes = WORKFLOW_STAGES.map((stage, i) => `
+      <button class="wf-node" id="wf-chip-${i}" style="left:${points[i].x}%;top:${points[i].y}%" onclick="toggleWorkflowStage(${i})" aria-expanded="false">
+        <span class="wf-node-num">${stage.num}</span>
+        <span class="wf-node-icon"><i class="fa-solid ${icons[i]}"></i></span>
+        <span class="wf-node-title">${stage.title}</span>
+      </button>`).join('');
+
+    flow.innerHTML = `
+      <svg class="wf-flow-svg" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <marker id="wf-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="var(--accent)"></path>
+          </marker>
+        </defs>
+        <path class="wf-flow-path-base" d="${path}"></path>
+        <path class="wf-flow-path-animated" d="${path}" marker-end="url(#wf-arrow)"></path>
+      </svg>
+      ${nodes}`;
+  }
+
+  function toggleWorkflowStage(idx) {
+    const panel = document.getElementById('wf-panel');
+    if (!panel) return;
+    WORKFLOW_STAGES.forEach((_, i) => {
+      const chip = document.getElementById('wf-chip-' + i);
+      if (chip) { chip.classList.remove('active'); chip.setAttribute('aria-expanded', 'false'); }
+    });
+    if (wfOpenIdx === idx) {
+      panel.classList.remove('open');
+      wfOpenIdx = null;
+      return;
+    }
+    const s = WORKFLOW_STAGES[idx];
+    const projLinks = s.projects.length
+      ? `<div class="wf-panel-row"><span class="wf-panel-key">Implemented In</span>
+           <div class="wf-panel-projects">${s.projects.map(pIdx =>
+             `<span class="wf-proj-link" onclick="jumpToProject(${pIdx})">${PROJECTS[pIdx].title}</span>`
+           ).join('')}</div></div>`
+      : `<div class="wf-panel-row"><span class="wf-panel-key">Implemented In</span><span class="wf-panel-val">Foundational to all 4 projects, not tied to one.</span></div>`;
+    panel.innerHTML = `
+      <div class="wf-panel-row"><span class="wf-panel-key">Stage</span><span class="wf-panel-val" style="color:var(--text);font-weight:600">${s.num} · ${s.title}</span></div>
+      <div class="wf-panel-row"><span class="wf-panel-key">Why</span><span class="wf-panel-val">${s.why}</span></div>
+      <div class="wf-panel-row"><span class="wf-panel-key">Goal</span><span class="wf-panel-val">${s.goal}</span></div>
+      <div class="wf-panel-row"><span class="wf-panel-key">Principles</span><ul class="wf-panel-list">${s.principles.map(p => `<li>${p}</li>`).join('')}</ul></div>
+      ${projLinks}
+    `;
+    panel.classList.add('open');
+    const chip = document.getElementById('wf-chip-' + idx);
+    if (chip) { chip.classList.add('active'); chip.setAttribute('aria-expanded', 'true'); }
+    wfOpenIdx = idx;
+  }
+
+  function jumpToProject(pIdx) {
+    const card = document.getElementById('project-card-' + pIdx);
+    if (!card) return;
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    card.classList.remove('wf-highlight');
+    void card.offsetWidth;
+    card.classList.add('wf-highlight');
+    setTimeout(() => card.classList.remove('wf-highlight'), 1500);
+  }
+
+  function jumpToWorkflow(stageIdx) {
+    const section = document.getElementById('workflow');
+    if (!section) return;
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => {
+      toggleWorkflowStage(stageIdx);
+      const node = document.getElementById('wf-chip-' + stageIdx);
+      if (node) {
+        node.classList.add('active');
+        node.focus({ preventScroll: true });
+      }
+    }, 650);
+  }
+
+  /* ══════════════════════════
+     THEME TOGGLE
+  ══════════════════════════ */
+  function initThemeToggle() {
+    const btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    const stored = localStorage.getItem('portfolio-theme');
+    if (stored === 'light') document.body.classList.add('light-theme');
+
+    function syncThemeLabel() {
+      const light = document.body.classList.contains('light-theme');
+      btn.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
+      btn.setAttribute('title', light ? 'Switch to dark mode' : 'Switch to light mode');
+    }
+
+    syncThemeLabel();
+    btn.addEventListener('click', () => {
+      const light = document.body.classList.toggle('light-theme');
+      localStorage.setItem('portfolio-theme', light ? 'light' : 'dark');
+      syncThemeLabel();
+    });
+  }
+
   /* INIT */
+  initThemeToggle();
   renderProjects();
+  renderWorkflow();
   startAllCarousels();
   initParticles();
   initTyping();
